@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h1 class="h3 mb-0">{{ object.name }}</h1>
+  <div class="d-flex gap-2">
+    <a class="btn btn-outline-primary" href="{% url 'tasks:task-update' object.id %}">Edit</a>
+    <a class="btn btn-outline-danger" href="{% url 'tasks:task-delete' object.id %}">Delete</a>
+    <form method="post" action="{% url 'tasks:task-toggle' object.id %}">
+      {% csrf_token %}
+      {% if object.is_completed %}
+        <button class="btn btn-outline-secondary" type="submit">Undo</button>
+      {% else %}
+        <button class="btn btn-outline-success" type="submit">Complete</button>
+      {% endif %}
+    </form>
+  </div>
+</div>
+
+<div class="card shadow-sm">
+  <div class="card-body">
+    <p class="text-muted mb-2">Type: <strong>{{ object.task_type.name }}</strong></p>
+    <p class="text-muted mb-2">Priority: <strong>{{ object.get_priority_display }}</strong></p>
+    <p class="text-muted mb-2">Deadline: <strong>{{ object.deadline|default:"—" }}</strong></p>
+    <p class="text-muted mb-3">
+      Status:
+      {% if object.is_completed %}
+        <span class="badge text-bg-success">Done</span>
+      {% else %}
+        <span class="badge text-bg-warning">Todo</span>
+      {% endif %}
+    </p>
+
+    {% if object.tags.all %}
+      <div class="mb-3">
+        {% for tag in object.tags.all %}
+          <span class="badge text-bg-secondary">{{ tag.name }}</span>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <h2 class="h5">Description</h2>
+    <p class="mb-4">{{ object.description|default:"—" }}</p>
+
+    <h2 class="h5">Assignees</h2>
+    {% if object.assignees.all %}
+      {% for a in object.assignees.all %}
+        <span class="badge text-bg-light border">{{ a }}</span>
+      {% endfor %}
+    {% else %}
+      <p class="text-muted mb-0">No assignees.</p>
+    {% endif %}
+  </div>
+</div>
+
+<a class="btn btn-link mt-3" href="{% url 'tasks:task-list' %}">← Back to list</a>
+{% endblock %}
