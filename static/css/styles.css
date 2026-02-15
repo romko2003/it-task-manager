@@ -1,0 +1,9 @@
+body {
+  background: #f6f7fb;
+}
+.card {
+  border-radius: 14px;
+}
+.table > :not(caption) > * > * {
+  vertical-align: middle;
+}
