@@ -1,83 +1,168 @@
 IT Task Manager
 
-A portfolio Django web application for managing tasks inside an IT team.
+A portfolio web application built with Django for managing tasks inside an IT team.
+The system allows developers, designers, QA engineers, and project managers to create, assign, and track tasks throughout the development process.
 
-The system allows workers to create tasks, assign them to team members, track progress, and organize work using task types, priorities, and tags.
+This project demonstrates practical skills in:
 
-Features Core functionality
+Django architecture
 
-Custom user model Worker (based on AbstractUser)
+custom user models
 
-Worker position support
+relational database design
 
-Task management:
+CRUD interfaces
 
-Create, update, delete tasks
+filtering and search
 
-Assign multiple workers
+Bootstrap-based UI
 
-Set priority and deadline
+Demo Features
+Task Management
 
-Mark tasks as done/undone
+Create, update, and delete tasks
 
-Task organization
+Assign tasks to multiple workers
+
+Set priority and deadlines
+
+Mark tasks as completed or reopen them
+
+View detailed task information
+
+Task Organization
 
 Task types (e.g. Bug, Feature, Refactor)
 
-Tags (Many-to-Many)
+Tags (Many-to-Many relationship)
 
 Filtering:
 
-by status
+by status (done / todo)
 
-by type
+by task type
 
 by priority
 
 by assignee
 
-Search by task name and description
+Text search by task name and description
 
-Workers
+Worker Management
 
-Workers list page
+Custom user model: Worker
 
-Worker detail page
+Position assigned to each worker
 
-Tasks separated into:
+Worker list page
 
-Todo
+Worker detail page with:
 
-Completed
+active tasks
 
-Technologies
+completed tasks
 
-Python
+Reference Data CRUD
 
-Django
+Positions
 
-SQLite
+Task types
 
-Bootstrap
+Tags
+
+Tech Stack
+
+Backend: Django, Python
+
+Database: SQLite
+
+Frontend: Django Templates, Bootstrap
+
+Version control: Git, GitHub (feature branch workflow)
 
 Database Structure
 
-See db_diagram.png in the repository.
+The project uses a relational schema with the following main entities:
 
+Worker (custom user model)
+
+Position
+
+Task
+
+TaskType
+
+Tag
+
+See the database diagram:
+
+db_diagram.png
 Installation
+1. Clone the repository
+git clone https://github.com/<your-username>/it-task-manager.git
+cd it-task-manager
+2. Create virtual environment
+python -m venv venv
 
-Clone the repository git clone https://github.com/<your-username>/it-task-manager.git cd it-task-manager
-Create virtual environment python -m venv venv source venv/bin/activate # macOS/Linux venv\Scripts\activate # Windows
-Install dependencies pip install -r requirements.txt
-Apply migrations python manage.py migrate
-Create superuser python manage.py createsuperuser
-Run server python manage.py runserver
+Activate it:
+
+macOS/Linux
+
+source venv/bin/activate
+
+Windows
+
+venv\Scripts\activate
+3. Install dependencies
+pip install -r requirements.txt
+4. Apply migrations
+python manage.py migrate
+5. Create superuser
+python manage.py createsuperuser
+6. Run the server
+python manage.py runserver
+
 Open in browser:
 
-http://127.0.0.1:8000/ Project Structure it_task_manager/ │ ├── it_task_manager/ # Django project settings ├── tasks/ # Main application ├── templates/ # HTML templates ├── static/ # CSS and static files ├── screens/ # Screenshots for PR ├── db_diagram.png # Database diagram ├── manage.py └── README.md Screenshots
+http://127.0.0.1:8000/
+Project Structure
+it-task-manager/
+│
+├── it_task_manager/   # Django project settings
+├── tasks/             # Main application
+│   ├── models.py
+│   ├── views.py
+│   ├── forms.py
+│   ├── urls.py
+│   └── admin.py
+│
+├── templates/         # HTML templates
+├── static/            # CSS and static files
+├── screens/           # Screenshots for PR
+├── db_diagram.png     # Database diagram
+├── requirements.txt
+├── manage.py
+└── README.md
+Screenshots
 
-See the screens/ folder.
+All interface screenshots are available in the screens/ directory.
+
+Key Concepts Demonstrated
+
+Custom Django user model
+
+Class-based views (CBV)
+
+Many-to-many relationships
+
+Query optimization with select_related and prefetch_related
+
+Filtering and search
+
+Clean project structure
+
+Feature-branch Git workflow
 
 Author
 
-Portfolio project created as part of Mate Academy Django module.
+Portfolio project created as part of the Mate Academy Django course.
