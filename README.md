@@ -1,168 +1,119 @@
-IT Task Manager
+## IT Task Manager
 
-A portfolio web application built with Django for managing tasks inside an IT team.
-The system allows developers, designers, QA engineers, and project managers to create, assign, and track tasks throughout the development process.
+A portfolio Django web application for managing tasks inside an IT team.
 
-This project demonstrates practical skills in:
+The system allows workers to create tasks, assign them to team members, track progress, and organize work using task types, priorities, and tags.
 
-Django architecture
+### Features
 
-custom user models
+#### Core functionality
 
-relational database design
+- **Custom user model**: `Worker` (based on `AbstractUser`)
+- **Worker positions**: separate model for worker positions
+- **Task management**:
+  - Create, update, delete tasks
+  - Assign multiple workers
+  - Set priority and deadline
+  - Mark tasks as done/undone
+- **Task organization**:
+  - Task types (e.g. Bug, Feature, Refactor)
+  - Tags (Many-to-Many)
+- **Filtering**:
+  - by status
+  - by type
+  - by priority
+  - by assignee
+- **Search** by task name and description
 
-CRUD interfaces
+#### Workers
 
-filtering and search
+- **Workers list page**
+- **Worker detail page**
+- Tasks separated into:
+  - Todo
+  - Completed
 
-Bootstrap-based UI
+### Technologies
 
-Demo Features
-Task Management
+- **Python**
+- **Django**
+- **SQLite**
+- **Bootstrap**
 
-Create, update, and delete tasks
+### Database Structure
 
-Assign tasks to multiple workers
+See `db_diagram.png` in the repository.
 
-Set priority and deadlines
+### Installation
 
-Mark tasks as completed or reopen them
+1. **Clone the repository**
 
-View detailed task information
-
-Task Organization
-
-Task types (e.g. Bug, Feature, Refactor)
-
-Tags (Many-to-Many relationship)
-
-Filtering:
-
-by status (done / todo)
-
-by task type
-
-by priority
-
-by assignee
-
-Text search by task name and description
-
-Worker Management
-
-Custom user model: Worker
-
-Position assigned to each worker
-
-Worker list page
-
-Worker detail page with:
-
-active tasks
-
-completed tasks
-
-Reference Data CRUD
-
-Positions
-
-Task types
-
-Tags
-
-Tech Stack
-
-Backend: Django, Python
-
-Database: SQLite
-
-Frontend: Django Templates, Bootstrap
-
-Version control: Git, GitHub (feature branch workflow)
-
-Database Structure
-
-The project uses a relational schema with the following main entities:
-
-Worker (custom user model)
-
-Position
-
-Task
-
-TaskType
-
-Tag
-
-See the database diagram:
-
-db_diagram.png
-Installation
-1. Clone the repository
+```bash
 git clone https://github.com/<your-username>/it-task-manager.git
 cd it-task-manager
-2. Create virtual environment
+```
+
+2. **Create and activate a virtual environment**
+
+```bash
 python -m venv venv
+source venv/bin/activate   # macOS/Linux
+venv\Scripts\activate      # Windows
+```
 
-Activate it:
+3. **Install dependencies**
 
-macOS/Linux
-
-source venv/bin/activate
-
-Windows
-
-venv\Scripts\activate
-3. Install dependencies
+```bash
 pip install -r requirements.txt
-4. Apply migrations
+```
+
+4. **Set environment variables**
+
+Create a `.env` file (or export variables in your shell) and set at least:
+
+```bash
+export DJANGO_SECRET_KEY="your-production-secret-key"
+```
+
+5. **Apply migrations**
+
+```bash
 python manage.py migrate
-5. Create superuser
+```
+
+6. **Create superuser**
+
+```bash
 python manage.py createsuperuser
-6. Run the server
+```
+
+7. **Run development server**
+
+```bash
 python manage.py runserver
+```
 
-Open in browser:
+Then open in browser: `http://127.0.0.1:8000/`
 
-http://127.0.0.1:8000/
-Project Structure
-it-task-manager/
+### Project Structure
+
+```text
+it_task_manager/
 │
 ├── it_task_manager/   # Django project settings
 ├── tasks/             # Main application
-│   ├── models.py
-│   ├── views.py
-│   ├── forms.py
-│   ├── urls.py
-│   └── admin.py
-│
 ├── templates/         # HTML templates
 ├── static/            # CSS and static files
 ├── screens/           # Screenshots for PR
 ├── db_diagram.png     # Database diagram
-├── requirements.txt
 ├── manage.py
 └── README.md
-Screenshots
+```
 
-All interface screenshots are available in the screens/ directory.
+### Screenshots
 
-Key Concepts Demonstrated
+See the `screens/` folder.
 
-Custom Django user model
+### Author
 
-Class-based views (CBV)
-
-Many-to-many relationships
-
-Query optimization with select_related and prefetch_related
-
-Filtering and search
-
-Clean project structure
-
-Feature-branch Git workflow
-
-Author
-
-Portfolio project created as part of the Mate Academy Django course.
+Portfolio project created as part of the Mate Academy Django module.
