@@ -117,5 +117,3 @@ See the `screens/` folder.
 ### Author
 
 Portfolio project created as part of the Mate Academy Django module.
-
-bb
